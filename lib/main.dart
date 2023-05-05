@@ -1,7 +1,19 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:sarpras/auth/sign_in.dart';
 import 'package:sarpras/nav/nav.dart';
+import 'package:sarpras/onboard/onboard.dart';
+import 'package:sarpras/pages/search/searchresult.dart';
+import 'package:sarpras/utils/themes.dart';
 
 void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp
+  ]);
   runApp(MyApp());
 }
 
@@ -10,11 +22,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: "Poppins",
-      ),
+      theme: theme(),
       home: Nav(),
     );
   }

@@ -1,10 +1,10 @@
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:sarpras/pages/activity_page.dart';
-import 'package:sarpras/pages/category_page.dart';
-import 'package:sarpras/pages/home_page.dart';
-import 'package:sarpras/pages/profile_page.dart';
+import 'package:sarpras/pages/activity/activity_page.dart';
+import 'package:sarpras/pages/category/category_page.dart';
+import 'package:sarpras/pages/home/home_page.dart';
+import 'package:sarpras/pages/profile/profile_page.dart';
 
 class Nav extends StatefulWidget {
   const Nav({Key? key}) : super(key: key);
@@ -52,21 +52,11 @@ class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 17,
-                    spreadRadius: -5,
-                    color: Colors.black.withOpacity(0.25)
-                  )
-                ]
-              ),
-                child: _widgetOptions.elementAt(selected_index)
-            ),
+          Container(
+              child: _widgetOptions.elementAt(selected_index)
           ),
 
           Container(
