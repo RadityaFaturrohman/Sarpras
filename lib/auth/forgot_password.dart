@@ -12,6 +12,8 @@ import 'package:sarpras/utils/constant.dart';
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({Key? key}) : super(key: key);
 
+  static String routeName = "/forgot_password";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,6 +116,8 @@ class _SignFormState extends State<SignForm> {
           padding: const EdgeInsets.only(right: 22),
           child: Icon(IconlyLight.message, size: 28,),
         ),
+        border: authInputBorder(),
+        focusedBorder: activedAuthInputBorder(),
       ),
     );
   }

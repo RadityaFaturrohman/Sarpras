@@ -1,16 +1,15 @@
-import 'dart:ui';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sarpras/auth/sign_in.dart';
-import 'package:sarpras/nav/nav.dart';
+import 'package:provider/provider.dart';
+import 'package:sarpras/auth/auth_provider.dart';
 import 'package:sarpras/onboard/onboard.dart';
-import 'package:sarpras/pages/search/searchresult.dart';
 import 'package:sarpras/utils/themes.dart';
 
-void main(){
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp
   ]);
@@ -23,10 +22,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: theme(),
-      home: Nav(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_)=>AuthProvider())
+      ],
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: theme(),
+        home: OnBoard(),
+      ),
     );
   }
 }

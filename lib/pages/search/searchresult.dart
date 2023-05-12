@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
+import 'package:sarpras/pages/components/bigCard.dart';
 import 'package:sarpras/pages/components/cardList.dart';
 import 'package:sarpras/pages/components/smallCard.dart';
 import 'package:get/get.dart';
 
 class Searchresult extends StatelessWidget {
-  const Searchresult({super.key});
+  final List<BigCard> card = List.generate(10, (index){
+    return BigCard(
+      image: "assets/ae.png",
+      stock: 3,
+      name: "Acer Essentials Projector",
+      category: "Projector",
+    );
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +45,8 @@ class Searchresult extends StatelessWidget {
                               ),
                               Container(
                                 margin: EdgeInsets.only(left: 15),
-                                height: 36,
-                                width: 290,
+                                height: 45,
+                                width: 350,
                                 decoration: BoxDecoration(
                                   color: Color.fromRGBO(233, 233, 233, 100),
                                   borderRadius: BorderRadius.circular(8),
@@ -60,11 +69,11 @@ class Searchresult extends StatelessWidget {
                                       child: TextField(
                                         decoration: InputDecoration(
                                             contentPadding: EdgeInsets.only(
-                                                left: 9, bottom: 13),
+                                                left: 9, bottom: 7),
                                             hintText: 'Acer',
                                             hintStyle: TextStyle(
                                                 fontFamily: 'Poppins',
-                                                fontSize: 13,
+                                                fontSize: 14,
                                                 color: Color.fromRGBO(
                                                     150, 142, 142, 100)),
                                             enabledBorder: InputBorder.none,
@@ -80,390 +89,361 @@ class Searchresult extends StatelessWidget {
                         Container(
                           padding:
                               EdgeInsets.only(top: 10, left: 10, right: 10),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                // Container(
-                                //    margin:
-                                //       EdgeInsets.only(bottom: 15, right: 10),
-                                //   width: 60,
-                                //   height: 55,
-                                //   child: TextButton(
-                                //     onPressed: () {},
-                                //     child: Column(
-                                //       children: [
-                                //         Container(
-                                //           width: 60,
-                                //            height: 40,
-                                //           decoration: BoxDecoration(
-                                //               gradient: const LinearGradient(
-                                //                   begin: Alignment.topLeft,
-                                //                   end: Alignment.bottomRight,
-                                //                   colors: <Color>[
-                                //                     Color(0xffD7D7D7),
-                                //                     Color(0xffD7D7D7),
-                                //                   ]),
-                                //               border: Border.all(
-                                //                   color: Color(0xffCDCDCD)),
-                                //               borderRadius:
-                                //                   BorderRadius.circular(4)),
-                                //           child: Icon(
-                                //             Icons.display_settings,
-                                //             color: Color(0xff454545),
-                                //           ),
-                                //         ),
-                                //       ],
-                                //     ),
-                                //   ),
-                                // ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 46,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7),
+                                    border: Border.all(color: Color(0xffCDCDCD)),
+                                    gradient: const LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: <Color>[
+                                          Color(0xffD7D7D7),
+                                          Color(0xffD7D7D7),
+                                        ])),
+                                margin: EdgeInsets.only(bottom: 15, right: 10),
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.only(left: 2),
+                                          height: 40,
+                                          child: Icon(
+                                            IconlyLight.filter,
+                                            color: Color(0xff496956),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
 
-                                Container(
-                                  width: 50,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(7),
-                                      border:
-                                          Border.all(color: Color(0xffCDCDCD)),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topLeft,
-                                          end: Alignment.bottomRight,
-                                          colors: <Color>[
-                                            Color(0xffD7D7D7),
-                                            Color(0xffD7D7D7),
-                                          ])),
-                                  margin:
-                                      EdgeInsets.only(bottom: 15, right: 10),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(left: 4),
-                                            height: 40,
-                                            child: Icon(
-                                              Icons.display_settings,
-                                              color: Color(0xff496956),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-
-                                Container(
-                                  width: 140,
-                                  height: 55,
-                                  margin:
-                                      EdgeInsets.only(bottom: 15, right: 10),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        border: Border.all(
-                                            color: Color(0xffCDCDCD)),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 55,
+                                      Container(
+                                        width: 140,
+                                        height: 55,
+                                        margin:
+                                            EdgeInsets.only(bottom: 15, right: 10),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          child: Container(
                                             decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(7),
-                                                border: Border.all(
-                                                    color: Color(0xffCDCDCD)),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD7D7D7),
-                                                      Color(0xffD7D7D7),
-                                                    ])),
-                                            child: Icon(
-                                              Icons.display_settings,
-                                              color: Color(0xff496956),
+                                              borderRadius: BorderRadius.circular(7),
+                                              border: Border.all(
+                                                  color: Color(0xffCDCDCD)),
                                             ),
-                                          ),
-                                          Container(
-                                            padding: const EdgeInsets.all(10),
                                             child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  child: Text(
-                                                    'Electronic',
-                                                    style: TextStyle(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 11,
-                                                        color:
-                                                            Color(0xff454545)),
+                                                  width: 40,
+                                                  height: 55,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(7),
+                                                      border: Border.all(
+                                                          color: Color(0xffCDCDCD)),
+                                                      gradient: const LinearGradient(
+                                                          begin: Alignment.topLeft,
+                                                          end: Alignment.bottomRight,
+                                                          colors: <Color>[
+                                                            Color(0xffD7D7D7),
+                                                            Color(0xffD7D7D7),
+                                                          ])),
+                                                  child: Icon(
+                                                    IconlyLight.game,
+                                                    color: Color(0xff496956),
                                                   ),
                                                 ),
+                                                Container(
+                                                  padding: const EdgeInsets.all(10),
+                                                  child: Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        child: Text(
+                                                          'Electronic',
+                                                          style: TextStyle(
+                                                              fontFamily: 'Poppins',
+                                                              fontSize: 11,
+                                                              color:
+                                                                  Color(0xff454545)),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
                                               ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: 140,
-                                  height: 55,
-                                  margin:
-                                      EdgeInsets.only(bottom: 15, right: 10),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        border: Border.all(
-                                            color: Color(0xffCDCDCD)),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 55,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(7),
-                                                border: Border.all(
-                                                    color: Color(0xffCDCDCD)),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD7D7D7),
-                                                      Color(0xffD7D7D7),
-                                                    ])),
-                                            child: Icon(
-                                              Icons.display_settings,
-                                              color: Color(0xff496956),
                                             ),
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.all(10),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 140,
+                                        height: 55,
+                                        margin:
+                                            EdgeInsets.only(bottom: 15, right: 10),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(7),
+                                              border: Border.all(
+                                                  color: Color(0xffCDCDCD)),
+                                            ),
                                             child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  child: Text(
-                                                    'Electronic',
-                                                    style: TextStyle(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 11,
-                                                        color:
-                                                            Color(0xff454545)),
+                                                  width: 40,
+                                                  height: 55,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(7),
+                                                      border: Border.all(
+                                                          color: Color(0xffCDCDCD)),
+                                                      gradient: const LinearGradient(
+                                                          begin: Alignment.topLeft,
+                                                          end: Alignment.bottomRight,
+                                                          colors: <Color>[
+                                                            Color(0xffD7D7D7),
+                                                            Color(0xffD7D7D7),
+                                                          ])),
+                                                  child: Icon(
+                                                    IconlyLight.ticket_star,
+                                                    color: Color(0xff496956),
                                                   ),
                                                 ),
+                                                Container(
+                                                  padding: const EdgeInsets.all(10),
+                                                  child: Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        child: Text(
+                                                          'Event Tools',
+                                                          style: TextStyle(
+                                                              fontFamily: 'Poppins',
+                                                              fontSize: 11,
+                                                              color:
+                                                                  Color(0xff454545)),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
                                               ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: 140,
-                                  height: 55,
-                                  margin:
-                                      EdgeInsets.only(bottom: 15, right: 10),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        border: Border.all(
-                                            color: Color(0xffCDCDCD)),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 55,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(7),
-                                                border: Border.all(
-                                                    color: Color(0xffCDCDCD)),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD7D7D7),
-                                                      Color(0xffD7D7D7),
-                                                    ])),
-                                            child: Icon(
-                                              Icons.display_settings,
-                                              color: Color(0xff496956),
                                             ),
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.all(10),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 140,
+                                        height: 55,
+                                        margin:
+                                            EdgeInsets.only(bottom: 15, right: 10),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(7),
+                                              border: Border.all(
+                                                  color: Color(0xffCDCDCD)),
+                                            ),
                                             child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  child: Text(
-                                                    'Electronic',
-                                                    style: TextStyle(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 11,
-                                                        color:
-                                                            Color(0xff454545)),
+                                                  width: 40,
+                                                  height: 55,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(7),
+                                                      border: Border.all(
+                                                          color: Color(0xffCDCDCD)),
+                                                      gradient: const LinearGradient(
+                                                          begin: Alignment.topLeft,
+                                                          end: Alignment.bottomRight,
+                                                          colors: <Color>[
+                                                            Color(0xffD7D7D7),
+                                                            Color(0xffD7D7D7),
+                                                          ])),
+                                                  child: Icon(
+                                                    IconlyLight.video,
+                                                    color: Color(0xff496956),
                                                   ),
                                                 ),
+                                                Container(
+                                                  padding: const EdgeInsets.all(10),
+                                                  child: Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        child: Text(
+                                                          'Projector',
+                                                          style: TextStyle(
+                                                              fontFamily: 'Poppins',
+                                                              fontSize: 11,
+                                                              color:
+                                                                  Color(0xff454545)),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
                                               ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: 140,
-                                  height: 55,
-                                  margin:
-                                      EdgeInsets.only(bottom: 15, right: 10),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        border: Border.all(
-                                            color: Color(0xffCDCDCD)),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 55,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(7),
-                                                border: Border.all(
-                                                    color: Color(0xffCDCDCD)),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD7D7D7),
-                                                      Color(0xffD7D7D7),
-                                                    ])),
-                                            child: Icon(
-                                              Icons.display_settings,
-                                              color: Color(0xff496956),
                                             ),
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.all(10),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 140,
+                                        height: 55,
+                                        margin:
+                                            EdgeInsets.only(bottom: 15, right: 10),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(7),
+                                              border: Border.all(
+                                                  color: Color(0xffCDCDCD)),
+                                            ),
                                             child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  child: Text(
-                                                    'Electronic',
-                                                    style: TextStyle(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 11,
-                                                        color:
-                                                            Color(0xff454545)),
+                                                  width: 40,
+                                                  height: 55,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(7),
+                                                      border: Border.all(
+                                                          color: Color(0xffCDCDCD)),
+                                                      gradient: const LinearGradient(
+                                                          begin: Alignment.topLeft,
+                                                          end: Alignment.bottomRight,
+                                                          colors: <Color>[
+                                                            Color(0xffD7D7D7),
+                                                            Color(0xffD7D7D7),
+                                                          ])),
+                                                  child: Icon(
+                                                    Icons.display_settings,
+                                                    color: Color(0xff496956),
                                                   ),
                                                 ),
+                                                Container(
+                                                  padding: const EdgeInsets.all(10),
+                                                  child: Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        child: Text(
+                                                          'Electronic',
+                                                          style: TextStyle(
+                                                              fontFamily: 'Poppins',
+                                                              fontSize: 11,
+                                                              color:
+                                                                  Color(0xff454545)),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
                                               ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  width: 140,
-                                  height: 55,
-                                  margin: EdgeInsets.only(
-                                    bottom: 15,
-                                  ),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(7),
-                                        border: Border.all(
-                                            color: Color(0xffCDCDCD)),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 40,
-                                            height: 55,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(7),
-                                                border: Border.all(
-                                                    color: Color(0xffCDCDCD)),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD7D7D7),
-                                                      Color(0xffD7D7D7),
-                                                    ])),
-                                            child: Icon(
-                                              Icons.display_settings,
-                                              color: Color(0xff496956),
                                             ),
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.all(10),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 140,
+                                        height: 55,
+                                        margin: EdgeInsets.only(
+                                          bottom: 15,
+                                        ),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(7),
+                                              border: Border.all(
+                                                  color: Color(0xffCDCDCD)),
+                                            ),
                                             child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  child: Text(
-                                                    'Electronic',
-                                                    style: TextStyle(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 11,
-                                                        color:
-                                                            Color(0xff454545)),
+                                                  width: 40,
+                                                  height: 55,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(7),
+                                                      border: Border.all(
+                                                          color: Color(0xffCDCDCD)),
+                                                      gradient: const LinearGradient(
+                                                          begin: Alignment.topLeft,
+                                                          end: Alignment.bottomRight,
+                                                          colors: <Color>[
+                                                            Color(0xffD7D7D7),
+                                                            Color(0xffD7D7D7),
+                                                          ])),
+                                                  child: Icon(
+                                                    Icons.display_settings,
+                                                    color: Color(0xff496956),
                                                   ),
                                                 ),
+                                                Container(
+                                                  padding: const EdgeInsets.all(10),
+                                                  child: Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        child: Text(
+                                                          'Electronic',
+                                                          style: TextStyle(
+                                                              fontFamily: 'Poppins',
+                                                              fontSize: 11,
+                                                              color:
+                                                                  Color(0xff454545)),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
                                               ],
                                             ),
-                                          )
-                                        ],
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -475,483 +455,27 @@ class Searchresult extends StatelessWidget {
                   child: ListView(
                     children: [
                       Container(
-                        padding: EdgeInsets.only(
-                            top: 20, left: 15, right: 15, bottom: 10),
+                        padding: EdgeInsets.only(top: 0, left: 10, right: 10, bottom: 10),
                         child: Column(
                           children: [
-                            Container(
-                              margin: EdgeInsets.only(bottom: 30),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    height: 180,
-                                    width: 150,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                          gradient: const LinearGradient(
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                              colors: <Color>[
-                                                Color(0xffE1E1E1),
-                                                Color(0xffE1E1E1),
-                                              ])),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 110,
-                                            width: 150,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD9D9D9),
-                                                      Color(0xffDDD6D6),
-                                                    ])),
-                                            child: Image.asset(
-                                                'assets/proyektor.png'),
-                                          ),
-                                          Container(
-                                            width: 230,
-                                            padding: const EdgeInsets.only(
-                                              top: 6,
-                                              left: 6,
-                                              right: 6,
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                      horizontal: 3,
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: const [
-                                                        Text(
-                                                          'Projector',
-                                                          style: TextStyle(
-                                                              color: Color(
-                                                                  0xff777777),
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontSize: 8),
-                                                        ),
-                                                      ],
-                                                    )),
-                                                Container(
-                                                  margin: const EdgeInsets.only(
-                                                      bottom: 5),
-                                                  child: Text(
-                                                      'Acer Essentials Projector',
-                                                      style: TextStyle(
-                                                          color:
-                                                              Color(0xff454545),
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontFamily:
-                                                              'Poppins')),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.only(
-                                                top: 5,
-                                                left: 5,
-                                                right: 5,
-                                                bottom: 5),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  '3 stock',
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w200),
-                                                ),
-                                                Icon(
-                                                  Icons
-                                                      .favorite_border_outlined,
-                                                  color: Colors.black,
-                                                  size: 17,
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 180,
-                                    width: 150,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                          gradient: const LinearGradient(
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                              colors: <Color>[
-                                                Color(0xffE1E1E1),
-                                                Color(0xffE1E1E1),
-                                              ])),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 110,
-                                            width: 150,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD9D9D9),
-                                                      Color(0xffDDD6D6),
-                                                    ])),
-                                            child: Image.asset(
-                                                'assets/proyektor.png'),
-                                          ),
-                                          Container(
-                                            width: 230,
-                                            padding: const EdgeInsets.only(
-                                              top: 6,
-                                              left: 6,
-                                              right: 6,
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                      horizontal: 3,
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: const [
-                                                        Text(
-                                                          'Projector',
-                                                          style: TextStyle(
-                                                              color: Color(
-                                                                  0xff777777),
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontSize: 8),
-                                                        ),
-                                                      ],
-                                                    )),
-                                                Container(
-                                                  margin: const EdgeInsets.only(
-                                                      bottom: 5),
-                                                  child: Text(
-                                                      'Acer Essentials Projector',
-                                                      style: TextStyle(
-                                                          color:
-                                                              Color(0xff454545),
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontFamily:
-                                                              'Poppins')),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.only(
-                                                top: 5,
-                                                left: 5,
-                                                right: 5,
-                                                bottom: 5),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  '3 stock',
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w200),
-                                                ),
-                                                Icon(
-                                                  Icons
-                                                      .favorite_border_outlined,
-                                                  color: Colors.black,
-                                                  size: 17,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                            GridView(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  mainAxisSpacing:21,
+                                  crossAxisSpacing: 21,
+                                  mainAxisExtent: 300
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(bottom: 30),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    height: 180,
-                                    width: 150,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                          gradient: const LinearGradient(
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                              colors: <Color>[
-                                                Color(0xffE1E1E1),
-                                                Color(0xffE1E1E1),
-                                              ])),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 110,
-                                            width: 150,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD7D7D7),
-                                                      Color(0xffD7D7D7),
-                                                    ])),
-                                            child: Image.asset(
-                                                'assets/proyektor.png'),
-                                          ),
-                                          Container(
-                                            width: 230,
-                                            padding: const EdgeInsets.only(
-                                              top: 6,
-                                              left: 6,
-                                              right: 6,
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                      horizontal: 3,
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: const [
-                                                        Text(
-                                                          'Projector',
-                                                          style: TextStyle(
-                                                              color: Color(
-                                                                  0xff777777),
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontSize: 8),
-                                                        ),
-                                                      ],
-                                                    )),
-                                                Container(
-                                                  margin: const EdgeInsets.only(
-                                                      bottom: 5),
-                                                  child: Text(
-                                                      'Acer Essentials Projector',
-                                                      style: TextStyle(
-                                                          color:
-                                                              Color(0xff454545),
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontFamily:
-                                                              'Poppins')),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.only(
-                                                left: 5,
-                                                right: 5,
-                                                bottom: 5,
-                                                top: 5),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  '3 stock',
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w200),
-                                                ),
-                                                Icon(
-                                                  Icons
-                                                      .favorite_border_outlined,
-                                                  color: Colors.black,
-                                                  size: 17,
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 180,
-                                    width: 150,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                          gradient: const LinearGradient(
-                                              begin: Alignment.topLeft,
-                                              end: Alignment.bottomRight,
-                                              colors: <Color>[
-                                                Color(0xffE1E1E1),
-                                                Color(0xffE1E1E1),
-                                              ])),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 110,
-                                            width: 150,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
-                                                gradient: const LinearGradient(
-                                                    begin: Alignment.topLeft,
-                                                    end: Alignment.bottomRight,
-                                                    colors: <Color>[
-                                                      Color(0xffD9D9D9),
-                                                      Color(0xffDDD6D6),
-                                                    ])),
-                                            child: Image.asset(
-                                                'assets/proyektor.png'),
-                                          ),
-                                          Container(
-                                            width: 230,
-                                            padding: const EdgeInsets.only(
-                                              top: 6,
-                                              left: 6,
-                                              right: 6,
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                      horizontal: 3,
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: const [
-                                                        Text(
-                                                          'Projector',
-                                                          style: TextStyle(
-                                                              color: Color(
-                                                                  0xff777777),
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontSize: 8),
-                                                        ),
-                                                      ],
-                                                    )),
-                                                Container(
-                                                  margin: const EdgeInsets.only(
-                                                      bottom: 5),
-                                                  child: Text(
-                                                      'Acer Essentials Projector',
-                                                      style: TextStyle(
-                                                          color:
-                                                              Color(0xff454545),
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontFamily:
-                                                              'Poppins')),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.only(
-                                                left: 5,
-                                                right: 5,
-                                                bottom: 5,
-                                                top: 5),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  '3 stock',
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w200),
-                                                ),
-                                                Icon(
-                                                  Icons
-                                                      .favorite_border_outlined,
-                                                  color: Colors.black,
-                                                  size: 17,
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              children: card,
                             ),
                             CardList(
-                                title: "Perfect for you",
+                                title: "Acer",
                                 child: Wrap(
                                   spacing: 20,
                                   children: [
                                     SmallCard(
-                                      image: "assets/proyektor.png",
+                                      image: "assets/ae.png",
                                       category: "Projector",
                                       name: "Acer Essentials Projector",
                                       stock: 3,
@@ -963,25 +487,25 @@ class Searchresult extends StatelessWidget {
                                       stock: 3,
                                     ),
                                     SmallCard(
-                                      image: "assets/proyektor.png",
+                                      image: "assets/ae.png",
                                       category: "Projector",
                                       name: "Acer Essentials Projector",
                                       stock: 3,
                                     ),
                                     SmallCard(
-                                      image: "assets/proyektor.png",
+                                      image: "assets/ae.png",
                                       category: "Projector",
                                       name: "Acer Essentials Projector",
                                       stock: 3,
                                     ),
                                     SmallCard(
-                                      image: "assets/proyektor.png",
+                                      image: "assets/ae.png",
                                       category: "Projector",
                                       name: "Acer Essentials Projector",
                                       stock: 3,
                                     ),
                                     SmallCard(
-                                      image: "assets/proyektor.png",
+                                      image: "assets/ae.png",
                                       category: "Projector",
                                       name: "Acer Essentials Projector",
                                       stock: 3,

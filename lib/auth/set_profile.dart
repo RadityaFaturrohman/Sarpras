@@ -1,7 +1,10 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:provider/provider.dart';
+import 'package:sarpras/auth/auth_provider.dart';
 import 'package:sarpras/auth/components/authBottom.dart';
 import 'package:sarpras/auth/components/authButton.dart';
 import 'package:sarpras/auth/components/authHeader.dart';
@@ -10,10 +13,15 @@ import 'package:sarpras/auth/sign_up.dart';
 import 'package:sarpras/utils/constant.dart';
 
 class SetProfile extends StatelessWidget {
-  const SetProfile({Key? key}) : super(key: key);
+  final String email;
+  final String password;
+  const SetProfile({Key? key, required this.email, required this.password}) : super(key: key);
 
+  static String routeName = "/set_profile";
   @override
   Widget build(BuildContext context) {
+    print(email);
+    print(password);
     return Scaffold(
       appBar: AppBar(
         leading: Container(
@@ -55,6 +63,23 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  final _usernameController = TextEditingController();
+  final _locationController = TextEditingController();
+  final _phoneController = TextEditingController();
+
+  Country selectedCountry = Country(
+      phoneCode: "62",
+      countryCode: "ID",
+      e164Sc: 0,
+      geographic: true,
+      level: 1,
+      name: "Indonesia",
+      example: "Indonesia",
+      displayName: "Indonesia",
+      displayNameNoCountryCode: "ID",
+      e164Key: ""
+  );
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -70,7 +95,11 @@ class _SignFormState extends State<SignForm> {
               SizedBox(height: 35,),
               AuthButton(
                 text: "Continue",
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => OtpVerification(),)
+                  );
+                },
               ),
               SizedBox(height: 30,),
               AuthBottom(
@@ -89,14 +118,17 @@ class _SignFormState extends State<SignForm> {
       validator: (value){
         return null;
       },
+      controller: _usernameController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: "Enter your first name",
-        labelText: "First Name",
+        hintText: "Enter your username",
+        labelText: "Username",
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 22),
           child: Icon(IconlyLight.profile, size: 28,),
         ),
+        border: authInputBorder(),
+        focusedBorder: activedAuthInputBorder(),
       ),
     );
   }
@@ -106,23 +138,28 @@ class _SignFormState extends State<SignForm> {
       validator: (value){
         return null;
       },
+      controller: _locationController,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: "Enter your last name",
-        labelText: "Last Name",
+        hintText: "Enter your address",
+        labelText: "Address",
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 22),
-          child: Icon(IconlyLight.profile, size: 28,),
+          child: Icon(IconlyLight.location, size: 28,),
         ),
+        border: authInputBorder(),
+        focusedBorder: activedAuthInputBorder(),
       ),
     );
   }
 
   TextFormField pNumTextFormField() {
     return TextFormField(
+
       validator: (value){
         return null;
       },
+      controller: _phoneController,
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
         hintText: "Enter your phone number",
@@ -131,8 +168,41 @@ class _SignFormState extends State<SignForm> {
           padding: const EdgeInsets.only(right: 22),
           child: Icon(IconlyLight.call, size: 28,),
         ),
+        border: authInputBorder(),
+        focusedBorder: activedAuthInputBorder(),
+        prefixIcon: Container(
+          padding: EdgeInsets.all(15),
+          child: InkWell(
+            onTap: (){
+              showCountryPicker(
+                  context: context,
+                  countryListTheme: CountryListThemeData(
+                    bottomSheetHeight: 400,
+                    padding: EdgeInsets.only(top: 10)
+                  ),
+                  onSelect: (value){
+                    setState(() {
+                    selectedCountry = value;
+                    });
+                  });
+            },
+            child: Text(
+                "${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: CusColors.titleColor,
+                fontSize: 15
+              ),
+            ),
+          ),
+        )
       ),
     );
+  }
+
+  void sendPNumber(){
+    final ap = Provider.of<AuthProvider>(context, listen: false);
+    String phoneNumber = _phoneController.text.trim();
   }
 
 }

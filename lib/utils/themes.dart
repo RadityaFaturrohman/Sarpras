@@ -27,23 +27,5 @@ InputDecorationTheme inputDecorationTheme() {
     floatingLabelBehavior: FloatingLabelBehavior.always,
     focusColor: CusColors.titleColor,
     contentPadding: EdgeInsets.symmetric(horizontal: 35, vertical: 18),
-    enabledBorder: outlineInputBorder(),
-    focusedBorder: activedOutlineInputBorder(),
-  );
-}
-
-OutlineInputBorder activedOutlineInputBorder() {
-  return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(28),
-      borderSide: BorderSide(color: CusColors.titleColor),
-      gapPadding: 10
-  );
-}
-
-OutlineInputBorder outlineInputBorder() {
-  return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(28),
-      borderSide: BorderSide(color: CusColors.grey200),
-      gapPadding: 10
   );
 }

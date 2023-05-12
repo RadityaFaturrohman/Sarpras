@@ -4,11 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sarpras/auth/components/authButton.dart';
 import 'package:sarpras/auth/components/authHeader.dart';
+import 'package:sarpras/auth/login_success.dart';
+import 'package:sarpras/auth/sign_in.dart';
 import 'package:sarpras/utils/constant.dart';
 
 
 class OtpVerification extends StatelessWidget {
   const OtpVerification({Key? key}) : super(key: key);
+
+  static String routeName = "/otp_verification";
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +196,11 @@ class _OtpFormState extends State<OtpForm> {
               SizedBox(height: 100,),
               AuthButton(
                 text: "Continue",
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute
+                    (builder: (context) => SignIn(),)
+                  );
+                },
               ),
               SizedBox(height: 55,),
               GestureDetector(

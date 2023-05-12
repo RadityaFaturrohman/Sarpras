@@ -13,7 +13,7 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: CusColors.appColor,
+      backgroundColor: Color(0xFFE9E9E9),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 35, horizontal: 12),
         child: Column(
@@ -68,88 +68,97 @@ class Search extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8.0, left: 10, right: 4),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(bottom: 20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          IconlyLight.time_circle,
-                          color: CusColors.subTitleColor,
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Spacer()),
-                        Text(
-                          "Laptop",
-                          style: TextStyle(
-                              color: CusColors.grey200,
-                            fontWeight: FontWeight.w500
+                  GestureDetector(
+                    onTap: ()=>Get.off(Searchresult()),
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            IconlyLight.time_circle,
+                            color: CusColors.subTitleColor,
                           ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.clear,
-                          size: 18,
-                          color: CusColors.subTitleColor,
-                        )
-                      ],
+                          Container(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Spacer()),
+                          Text(
+                            "Laptop",
+                            style: TextStyle(
+                                color: CusColors.grey200,
+                              fontWeight: FontWeight.w500
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.clear,
+                            size: 18,
+                            color: CusColors.subTitleColor,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          IconlyLight.time_circle,
-                          color: CusColors.subTitleColor,
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Spacer()),
-                        Text(
-                          "Laptop",
-                          style: TextStyle(
-                              color: CusColors.grey200,
-                              fontWeight: FontWeight.w500
+                  GestureDetector(
+                    onTap: ()=>Get.off(Searchresult()),
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            IconlyLight.time_circle,
+                            color: CusColors.subTitleColor,
                           ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.clear,
-                          size: 18,
-                          color: CusColors.subTitleColor,
-                        )
-                      ],
+                          Container(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Spacer()),
+                          Text(
+                            "Laptop",
+                            style: TextStyle(
+                                color: CusColors.grey200,
+                                fontWeight: FontWeight.w500
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.clear,
+                            size: 18,
+                            color: CusColors.subTitleColor,
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          IconlyLight.time_circle,
-                          color: CusColors.subTitleColor,
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Spacer()),
-                        Text(
-                          "Laptop",
-                          style: TextStyle(
-                              color: CusColors.grey200,
-                              fontWeight: FontWeight.w500
+                  GestureDetector(
+                    onTap: ()=>Get.off(Searchresult()),
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(
+                            IconlyLight.time_circle,
+                            color: CusColors.subTitleColor,
                           ),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.clear,
-                          size: 18,
-                          color: CusColors.subTitleColor,
-                        )
-                      ],
+                          Container(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Spacer()),
+                          Text(
+                            "Laptop",
+                            style: TextStyle(
+                                color: CusColors.grey200,
+                                fontWeight: FontWeight.w500
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.clear,
+                            size: 18,
+                            color: CusColors.subTitleColor,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -164,6 +173,7 @@ class Search extends StatelessWidget {
                                       side: BorderSide(width: 1, color: CusColors.subTitleColor)
                                   )
                               ),
+                              shadowColor: MaterialStatePropertyAll(Colors.transparent),
                               backgroundColor: MaterialStateProperty.all(CusColors.appColor)
                           ),
                           onPressed: (){},

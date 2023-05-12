@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:get/get.dart';
+import 'package:sarpras/pages/cart.dart';
 import 'package:sarpras/pages/components/cardList.dart';
 import 'package:sarpras/pages/components/categoryIcon.dart';
 import 'package:sarpras/pages/components/smallCard.dart';
@@ -15,10 +16,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Expanded(
-          child: ListView(
+    return Scaffold(
+      body: Stack(
+        children: [
+
+          ListView(
             scrollDirection: Axis.vertical,
             children:[
               Column(
@@ -69,37 +71,44 @@ class HomePage extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Stack(
-                                        children:[
-                                          Container(
-                                            width: 48,
-                                            height: 48,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: CusColors.grey100.withOpacity(0.1),
-                                            ),
-                                            child: Icon(
-                                              IconlyLight.bag,
-                                              color: CusColors.titleColor,
-                                              size: 26,
-                                            ),
-                                          ),
-                                          Positioned(
-                                            right: 0,
-                                            child: Container(
-                                              width: 15,
-                                              height: 15,
+                                    GestureDetector(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(
+                                            builder: (context) => Cart(),)
+                                        );
+                                      },
+                                      child: Stack(
+                                          children:[
+                                            Container(
+                                              width: 48,
+                                              height: 48,
                                               alignment: Alignment.center,
-                                              transform: Matrix4.translationValues(1, -1, 0),
-                                              child: Text("3", style: TextStyle(color: Colors.white,fontSize: 8),),
                                               decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: CusColors.pinkMain
+                                                shape: BoxShape.circle,
+                                                color: CusColors.grey100.withOpacity(0.1),
+                                              ),
+                                              child: Icon(
+                                                IconlyLight.bag,
+                                                color: CusColors.titleColor,
+                                                size: 26,
                                               ),
                                             ),
-                                          )
-                                        ]
+                                            Positioned(
+                                              right: 0,
+                                              child: Container(
+                                                width: 15,
+                                                height: 15,
+                                                alignment: Alignment.center,
+                                                transform: Matrix4.translationValues(1, -1, 0),
+                                                child: Text("5", style: TextStyle(color: Colors.white,fontSize: 9, fontWeight: FontWeight.w500),),
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: CusColors.pinkMain
+                                                ),
+                                              ),
+                                            )
+                                          ]
+                                      ),
                                     ),
                                     GestureDetector(
                                       onTap: (){Navigator.push(context, MaterialPageRoute(
@@ -128,7 +137,7 @@ class HomePage extends StatelessWidget {
                                                 height: 15,
                                                 alignment: Alignment.center,
                                                 transform: Matrix4.translationValues(1, -1, 0),
-                                                child: Text("3", style: TextStyle(color: Colors.white,fontSize: 8),),
+                                                child: Text("4", style: TextStyle(color: Colors.white,fontSize: 9, fontWeight: FontWeight.w500),),
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: CusColors.pinkMain
@@ -213,7 +222,7 @@ class HomePage extends StatelessWidget {
                                 children: [
                                   SizedBox(width: 2,),
                                   CategoryIcon(
-                                    icon: IconlyLight.camera,
+                                    icon: IconlyLight.calendar,
                                     category: "Camera"
                                   ),
                                   CategoryIcon(
@@ -316,6 +325,7 @@ class HomePage extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.only(left: 5),
+                    margin: EdgeInsets.only(top:15),
                     child: Column(
                       children: [
                         CardList(
@@ -358,137 +368,411 @@ class HomePage extends StatelessWidget {
                             ],
                           )
                         ),
-                        SizedBox(height: 60,)
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(left: 5),
+                    margin: EdgeInsets.only(top:15),
+                    child: Column(
+                      children: [
+                        CardList(
+                          title: "Perfect for you",
+                          onClick: HomePage(),
+                          child: Wrap(
+                            spacing: 20,
+                            children: [
+                              SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),
+                            ],
+                          )
+                        ),
+                      ],
+                    ),
+                  ),Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(left: 5),
+                    margin: EdgeInsets.only(top:15),
+                    child: Column(
+                      children: [
+                        CardList(
+                          title: "Perfect for you",
+                          onClick: HomePage(),
+                          child: Wrap(
+                            spacing: 20,
+                            children: [
+                              SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),
+                            ],
+                          )
+                        ),
+                      ],
+                    ),
+                  ),Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(left: 5),
+                    margin: EdgeInsets.only(top:15),
+                    child: Column(
+                      children: [
+                        CardList(
+                          title: "Perfect for you",
+                          onClick: HomePage(),
+                          child: Wrap(
+                            spacing: 20,
+                            children: [
+                              SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),SmallCard(
+                                image: "assets/ae.png",
+                                category: "Projector",
+                                name: "Acer Essentials Projector",
+                                stock: 3,
+                              ),
+                            ],
+                          )
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: 60,)
+
 
                 ],
               ),
             ]
           ),
-        ),
-        // Container(
-        //   height: 105,
-        //   alignment: Alignment.center,
-        //   decoration: BoxDecoration(
-        //       color: CusColors.whiteMain,
-        //       boxShadow: [BoxShadow(
-        //       blurRadius: 1,spreadRadius: 2,color: Colors.black.withOpacity(0.2)
-        //     )]
-        //   ),
-        //   child: Container(
-        //     width: double.infinity,
-        //     margin: EdgeInsets.only(top: 25, bottom: 5),
-        //     padding: EdgeInsets.symmetric(horizontal: 22,),
-        //     color: CusColors.whiteMain,
-        //     height: 45,
-        //     child: Row(
-        //       crossAxisAlignment: CrossAxisAlignment.start,
-        //       children: [
-        //         Expanded(
-        //           child: TextField(
-        //             decoration: InputDecoration(
-        //                 border: OutlineInputBorder(
-        //                     borderRadius: BorderRadius.circular(10)
-        //                 ),
-        //                 enabledBorder: OutlineInputBorder(
-        //                     borderRadius: BorderRadius.circular(10),
-        //                     borderSide: BorderSide(color: CusColors.grey100)
-        //                 ),
-        //                 focusedBorder: OutlineInputBorder(
-        //                     borderRadius: BorderRadius.circular(10),
-        //                     borderSide: BorderSide(color: CusColors.grey100)
-        //                 ),
-        //                 focusColor: CusColors.grey300,
-        //                 fillColor: CusColors.grey300,
-        //                 contentPadding: EdgeInsets.only(left: 80),
-        //                 hintText: "Search...",
-        //                 prefixIcon: Padding(
-        //                   padding: const EdgeInsets.only(bottom: 3),
-        //                   child: Icon(IconlyLight.search, color: CusColors.grey100,),
-        //                 )
-        //             ),
-        //           ),
-        //         ),
-        //         Container(
-        //           padding: EdgeInsets.only(left: 12),
-        //           width: 120,
-        //           child: Row(
-        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //             children: [
-        //               Stack(
-        //                   children:[
-        //                     Container(
-        //                       width: 48,
-        //                       height: 48,
-        //                       alignment: Alignment.center,
-        //                       decoration: BoxDecoration(
-        //                         shape: BoxShape.circle,
-        //                         color: CusColors.grey100.withOpacity(0.1),
-        //                       ),
-        //                       child: Icon(
-        //                         IconlyLight.bag,
-        //                         color: CusColors.titleColor,
-        //                         size: 28,
-        //                       ),
-        //                     ),
-        //                     Positioned(
-        //                       right: 0,
-        //                       child: Container(
-        //                         width: 15,
-        //                         height: 15,
-        //                         alignment: Alignment.center,
-        //                         transform: Matrix4.translationValues(1, -1, 0),
-        //                         child: Text("3", style: TextStyle(color: Colors.white,fontSize: 8),),
-        //                         decoration: BoxDecoration(
-        //                             shape: BoxShape.circle,
-        //                             color: CusColors.pinkMain
-        //                         ),
-        //                       ),
-        //                     )
-        //                   ]
-        //               ),
-        //               Stack(
-        //                   children:[
-        //                     Container(
-        //                       width: 45,
-        //                       height: 45,
-        //                       alignment: Alignment.center,
-        //                       decoration: BoxDecoration(
-        //                         shape: BoxShape.circle,
-        //                         color: CusColors.grey100.withOpacity(0.1),
-        //                       ),
-        //                       child: Icon(
-        //                         IconlyLight.notification,
-        //                         color: CusColors.titleColor,
-        //                         size: 28,
-        //                       ),
-        //                     ),
-        //                     Positioned(
-        //                       right: 0,
-        //                       child: Container(
-        //                         width: 15,
-        //                         height: 15,
-        //                         alignment: Alignment.center,
-        //                         transform: Matrix4.translationValues(1, -1, 0),
-        //                         child: Text("3", style: TextStyle(color: Colors.white,fontSize: 8),),
-        //                         decoration: BoxDecoration(
-        //                             shape: BoxShape.circle,
-        //                             color: CusColors.pinkMain
-        //                         ),
-        //                       ),
-        //                     )
-        //                   ]
-        //               )
-        //             ],
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
-      ],
+
+          Container(
+            color: CusColors.whiteMain,
+            padding: EdgeInsets.only(top:46, left: 22, right: 22, bottom: 10),
+            child: Container(
+              width: double.infinity,
+              height: 45,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: TextField(
+                      onTap: ()=>Get.to(Search(), transition: Transition.fadeIn),
+                      autofocus: false,
+
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: CusColors.grey100)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: CusColors.grey100)
+                          ),
+                          focusColor: CusColors.grey300,
+                          fillColor: CusColors.grey300,
+                          contentPadding: EdgeInsets.only(left: 80),
+                          hintText: "Search...",
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.only(bottom: 3),
+                            child: Icon(IconlyLight.search, color: CusColors.grey100,),
+                          )
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 12),
+                    width: 120,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => Cart(),)
+                            );
+                          },
+                          child: Stack(
+                              children:[
+                                Container(
+                                  width: 48,
+                                  height: 48,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: CusColors.grey100.withOpacity(0.1),
+                                  ),
+                                  child: Icon(
+                                    IconlyLight.bag,
+                                    color: CusColors.titleColor,
+                                    size: 26,
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 0,
+                                  child: Container(
+                                    width: 15,
+                                    height: 15,
+                                    alignment: Alignment.center,
+                                    transform: Matrix4.translationValues(1, -1, 0),
+                                    child: Text("5", style: TextStyle(color: Colors.white,fontSize: 9, fontWeight: FontWeight.w500),),
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: CusColors.pinkMain
+                                    ),
+                                  ),
+                                )
+                              ]
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => NotificationPage(),
+                          ));},
+                          child: Stack(
+                              children:[
+                                Container(
+                                  width: 45,
+                                  height: 45,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: CusColors.grey100.withOpacity(0.1),
+                                  ),
+                                  child: Icon(
+                                    IconlyLight.notification,
+                                    color: CusColors.titleColor,
+                                    size: 26,
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 0,
+                                  child: Container(
+                                    width: 15,
+                                    height: 15,
+                                    alignment: Alignment.center,
+                                    transform: Matrix4.translationValues(1, -1, 0),
+                                    child: Text("4", style: TextStyle(color: Colors.white,fontSize: 9, fontWeight: FontWeight.w500),),
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: CusColors.pinkMain
+                                    ),
+                                  ),
+                                )
+                              ]
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          // Container(
+          //   height: 105,
+          //   alignment: Alignment.center,
+          //   decoration: BoxDecoration(
+          //       color: CusColors.whiteMain,
+          //       boxShadow: [BoxShadow(
+          //       blurRadius: 1,spreadRadius: 2,color: Colors.black.withOpacity(0.2)
+          //     )]
+          //   ),
+          //   child: Container(
+          //     width: double.infinity,
+          //     margin: EdgeInsets.only(top: 25, bottom: 5),
+          //     padding: EdgeInsets.symmetric(horizontal: 22,),
+          //     color: CusColors.whiteMain,
+          //     height: 45,
+          //     child: Row(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Expanded(
+          //           child: TextField(
+          //             decoration: InputDecoration(
+          //                 border: OutlineInputBorder(
+          //                     borderRadius: BorderRadius.circular(10)
+          //                 ),
+          //                 enabledBorder: OutlineInputBorder(
+          //                     borderRadius: BorderRadius.circular(10),
+          //                     borderSide: BorderSide(color: CusColors.grey100)
+          //                 ),
+          //                 focusedBorder: OutlineInputBorder(
+          //                     borderRadius: BorderRadius.circular(10),
+          //                     borderSide: BorderSide(color: CusColors.grey100)
+          //                 ),
+          //                 focusColor: CusColors.grey300,
+          //                 fillColor: CusColors.grey300,
+          //                 contentPadding: EdgeInsets.only(left: 80),
+          //                 hintText: "Search...",
+          //                 prefixIcon: Padding(
+          //                   padding: const EdgeInsets.only(bottom: 3),
+          //                   child: Icon(IconlyLight.search, color: CusColors.grey100,),
+          //                 )
+          //             ),
+          //           ),
+          //         ),
+          //         Container(
+          //           padding: EdgeInsets.only(left: 12),
+          //           width: 120,
+          //           child: Row(
+          //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //             children: [
+          //               Stack(
+          //                   children:[
+          //                     Container(
+          //                       width: 48,
+          //                       height: 48,
+          //                       alignment: Alignment.center,
+          //                       decoration: BoxDecoration(
+          //                         shape: BoxShape.circle,
+          //                         color: CusColors.grey100.withOpacity(0.1),
+          //                       ),
+          //                       child: Icon(
+          //                         IconlyLight.bag,
+          //                         color: CusColors.titleColor,
+          //                         size: 28,
+          //                       ),
+          //                     ),
+          //                     Positioned(
+          //                       right: 0,
+          //                       child: Container(
+          //                         width: 15,
+          //                         height: 15,
+          //                         alignment: Alignment.center,
+          //                         transform: Matrix4.translationValues(1, -1, 0),
+          //                         child: Text("3", style: TextStyle(color: Colors.white,fontSize: 8),),
+          //                         decoration: BoxDecoration(
+          //                             shape: BoxShape.circle,
+          //                             color: CusColors.pinkMain
+          //                         ),
+          //                       ),
+          //                     )
+          //                   ]
+          //               ),
+          //               Stack(
+          //                   children:[
+          //                     Container(
+          //                       width: 45,
+          //                       height: 45,
+          //                       alignment: Alignment.center,
+          //                       decoration: BoxDecoration(
+          //                         shape: BoxShape.circle,
+          //                         color: CusColors.grey100.withOpacity(0.1),
+          //                       ),
+          //                       child: Icon(
+          //                         IconlyLight.notification,
+          //                         color: CusColors.titleColor,
+          //                         size: 28,
+          //                       ),
+          //                     ),
+          //                     Positioned(
+          //                       right: 0,
+          //                       child: Container(
+          //                         width: 15,
+          //                         height: 15,
+          //                         alignment: Alignment.center,
+          //                         transform: Matrix4.translationValues(1, -1, 0),
+          //                         child: Text("3", style: TextStyle(color: Colors.white,fontSize: 8),),
+          //                         decoration: BoxDecoration(
+          //                             shape: BoxShape.circle,
+          //                             color: CusColors.pinkMain
+          //                         ),
+          //                       ),
+          //                     )
+          //                   ]
+          //               )
+          //             ],
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+        ],
+      ),
     );
   }
 

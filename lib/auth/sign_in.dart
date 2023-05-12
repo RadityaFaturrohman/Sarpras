@@ -1,5 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:sarpras/auth/components/authBottom.dart';
@@ -10,6 +10,7 @@ import 'package:sarpras/auth/components/socialCard.dart';
 import 'package:sarpras/auth/forgot_password.dart';
 import 'package:sarpras/auth/login_success.dart';
 import 'package:sarpras/auth/sign_up.dart';
+import 'package:sarpras/onboard/onboard.dart';
 import 'package:sarpras/utils/constant.dart';
 
 class SignIn extends StatelessWidget {
@@ -22,7 +23,11 @@ class SignIn extends StatelessWidget {
         leading: Container(
             padding: EdgeInsets.only(left: 5),
             child: GestureDetector(
-              onTap: (){Navigator.of(context).pop();},
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) => OnBoard(),)
+                );
+              },
               child: Icon(
                 CupertinoIcons.chevron_left,
                 weight: 1.5,
@@ -58,22 +63,78 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  bool _isLoading = false;
   String? email;
   String? password;
-  String? emailErrors = "yes";
-  bool emailError = false;
+  String emailed = "sulthanwahyu70@gmail.com";
+  String passworded = "12345678";
+  String _error = '';
+
+  void _submit() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+      _formKey.currentState!.save();
+      try {
+        // UserCredential userCredential =
+        // await _auth.signInWithEmailAndPassword(
+        //   email: _emailController.text.trim(),
+        //   password: _passwordController.text.trim(),
+        // );
+        // User? user = userCredential.user;
+        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginSuccess(),));
+        // ignore: deprecated_member_use
+
+        setState(() {
+          _isLoading = false;
+        });
+      } on FirebaseAuthException catch (e) {
+        setState(() {
+          _isLoading = false;
+        });
+        String errorMessage;
+
+        switch (e.code) {
+          case 'user-not-found':
+            errorMessage = 'User not found for that email.';
+            break;
+          case 'wrong-password':
+            errorMessage = 'Invalid password.';
+            break;
+          case 'invalid-email':
+            errorMessage = 'Invalid email address.';
+            break;
+          default:
+            errorMessage = 'Email not found.';
+            break;
+        }
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(errorMessage),
+            backgroundColor: Colors.red,
+          ),
+        );
+      } catch (e) {
+        print(e);
+      }
+    }
+  }
   bool remember = false;
-  final List<String> passwordErrors = [];
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 22,),
       child: Form(
+          key: _formKey,
           child: Column(
             children: [
               emailFormField(),
-              emailError ?
-              AuthErrorMessage(text: emailErrors.toString(),):
               SizedBox(height: 30,),
               passwordTextFormField(),
               SizedBox(height: 12,),
@@ -123,10 +184,8 @@ class _SignFormState extends State<SignForm> {
               AuthButton(
                 text: "Continue",
                 onPressed: (){
-                  // if(_formKey.currentState!.validate()){
-                  //   print('yes');
-                  // };}
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginSuccess()));}
+                  _isLoading ? null : _submit();
+                }
               ),
               Padding(padding: EdgeInsets.only(top: 42)),
 
@@ -147,7 +206,20 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField passwordTextFormField() {
     return TextFormField(
+      onChanged: (newValue)=>setState(() {
+        password = newValue;
+      }),
       validator: (value){
+        if (value == null ||
+            value.isEmpty) {
+          return 'Please enter your password.';
+        }
+        if (value.length < 6) {
+          return 'The password must be at least 6 characters long.';
+        }
+        if (value != passworded) {
+          return 'The password must be at least 6 characters long.';
+        }
         return null;
       },
       obscureText: true,
@@ -158,27 +230,27 @@ class _SignFormState extends State<SignForm> {
           padding: const EdgeInsets.only(right: 22),
           child: Icon(IconlyLight.lock, size: 28,),
         ),
+        border: authInputBorder(),
+        focusedBorder: activedAuthInputBorder(),
       ),
     );
   }
 
   TextFormField emailFormField() {
     return TextFormField(
-      onSaved: (newValue) => email = newValue,
+      onChanged: (newValue) => setState(() {
+        email = newValue;
+      }),
       validator: (value){
-          if (value == null || value.isEmpty){
-            setState(() {
-              emailError = true;
-              print('ys');
-              print(emailError);
-              emailErrors = emailNullError;
-            });
-          } else if(emailValidatorRegExp.hasMatch(value) ){
-            setState(() {
-              emailError = true;
-              emailErrors = emailInvalidError;
-            });
-          }
+        if (value!.isEmpty) {
+          return 'Please enter an email address.';
+        }
+        if (!value.contains(emailValidatorRegExp)) {
+          return 'Please enter a valid email address.';
+        }
+        if (value != emailed) {
+          return 'Please enter a valid email address.';
+        }
           return null;
       },
       keyboardType: TextInputType.emailAddress,
@@ -189,6 +261,8 @@ class _SignFormState extends State<SignForm> {
           padding: const EdgeInsets.only(right: 22),
           child: Icon(IconlyLight.message, size: 28,),
         ),
+        border: authInputBorder(),
+        focusedBorder: activedAuthInputBorder(),
       ),
     );
   }

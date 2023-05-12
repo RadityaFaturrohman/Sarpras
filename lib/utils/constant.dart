@@ -25,7 +25,7 @@ Color kijo = Color(0xff384E41);
 Color kabu = Color(0xff5F6F65);
 Color kgelap = Color(0xff5F6F65);
 
-final RegExp emailValidatorRegExp = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+final RegExp emailValidatorRegExp = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 const String emailNullError = "Please Enter your email";
 const String emailInvalidError = "Please Enter a valid email";
 const String passwordNullError = "Please Enter your password";
@@ -45,5 +45,21 @@ OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
       borderSide: BorderSide(color: CusColors.grey300)
+  );
+}
+
+OutlineInputBorder activedAuthInputBorder() {
+  return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(28),
+      borderSide: BorderSide(color: CusColors.mainColor),
+      gapPadding: 10
+  );
+}
+
+OutlineInputBorder authInputBorder() {
+  return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(28),
+      borderSide: BorderSide(color: CusColors.grey200),
+      gapPadding: 10
   );
 }

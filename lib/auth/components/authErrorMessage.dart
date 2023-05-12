@@ -13,7 +13,7 @@ class AuthErrorMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 11, top: 4),
+      padding: const EdgeInsets.only(left: 11, top: 4, bottom: 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sarpras/auth/components/authButton.dart';
 import 'package:sarpras/nav/nav.dart';
+import 'package:sarpras/pages/home/home_page.dart';
 import 'package:sarpras/utils/constant.dart';
 
 class LoginSuccess extends StatefulWidget {
@@ -66,7 +67,11 @@ class _LoginSuccessState extends State<LoginSuccess> {
                   padding: EdgeInsets.symmetric(horizontal: 22),
                   child: AuthButton(
                     text: "Go to Home",
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                          builder: (context) => HomePage(),)
+                      );
+                    },
                   ),
                 ),
                 SizedBox(height: 30,),

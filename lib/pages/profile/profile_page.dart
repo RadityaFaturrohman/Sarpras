@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
+import 'package:sarpras/auth/sign_in.dart';
 import 'package:sarpras/pages/profile/accountinfo.dart';
 import 'package:sarpras/pages/profile/editprofile.dart';
 import 'package:sarpras/utils/constant.dart';
@@ -13,7 +17,7 @@ class ProfilePage extends StatelessWidget {
         Container(
           width: double.infinity,
           color: CusColors.whiteMain,
-          padding: EdgeInsets.only(top: 40, bottom: 35),
+          padding: EdgeInsets.only(top: 40, bottom: 25),
           child: Column(
             children: [
               Text(
@@ -21,30 +25,30 @@ class ProfilePage extends StatelessWidget {
                   style: TextStyle(
                     color: CusColors.titleColor,
                     fontSize: 16,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.w600,
+                    letterSpacing: .8,
+                    fontWeight: FontWeight.w500,
                   )
-              ),
-              SizedBox(
-                height: 28,
-              ),
-              CircleAvatar(
-                maxRadius: 70,
-                backgroundImage: AssetImage('assets/raul.jpg'),
               ),
               SizedBox(
                 height: 20,
               ),
+              CircleAvatar(
+                maxRadius: 65,
+                backgroundImage: AssetImage('assets/raul.jpg'),
+              ),
+              SizedBox(
+                height: 18,
+              ),
               Text(
-                "Raul Evans",
+                "Sulthan Wahyu",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: CusColors.titleColor,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Text(
-                  "raul6@gmail.com",
+                  "sultanwahyu70@gmail.com",
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   color: CusColors.subTitleColor,
@@ -52,26 +56,31 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 18,
               ),
               SizedBox(
-                width: 135,
-                height: 41,
+                width: 128,
+                height: 40,
                 child: ElevatedButton(
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                side: BorderSide(width: 1, color: CusColors.subTitleColor)
+                                side: BorderSide(width: .8, color: CusColors.buttonBg)
                             )
                         ),
+                        shadowColor: MaterialStatePropertyAll(Colors.transparent),
                         backgroundColor: MaterialStateProperty.all(CusColors.whiteMain)
                     ),
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Editprofile(),)
+                      );
+                    },
                     child: Text(
                       "Edit Profile",
                       style: TextStyle(
-                        color: CusColors.grey200,
+                        color: CusColors.mainColor,
                         fontSize: 12,
                       ),
                     )
@@ -80,9 +89,9 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
+        Flexible(
           child: Container(
-            padding: EdgeInsets.only(left: 5),
+            padding: EdgeInsets.only(left: 2),
             child: ListView(
               children: [
                 Column(
@@ -96,22 +105,22 @@ class ProfilePage extends StatelessWidget {
                       child: Container(
                         child: ListTile(
                           leading: Icon(
-                            Icons.person_2_outlined,
-                            color: Color.fromRGBO(69, 69, 69, 100),
-                            size: 22,
+                            IconlyLight.profile,
+                            color: CusColors.titleColor,
+                            size: 28,
                           ),
-                          horizontalTitleGap: -6,
+                          horizontalTitleGap: -4,
                           title: Text(
                             "Account Information",
                             style: TextStyle(
-                                fontFamily: "Poppins",
                                 fontSize: 15,
-                                color: Color.fromRGBO(69, 69, 69, 100),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w500),
+                                color: CusColors.titleColor,
+                                letterSpacing: .5,
+                                fontWeight: FontWeight.w500
+                            ),
                           ),
                           trailing: Container(
-                            child: Icon(Icons.arrow_right),
+                            child: Icon(IconlyLight.arrow_right_2, color: CusColors.titleColor,),
                           ),
                         ),
                       ),
@@ -128,22 +137,22 @@ class ProfilePage extends StatelessWidget {
                       child: Container(
                         child: ListTile(
                           leading: Icon(
-                            Icons.settings_outlined,
-                            color: Color.fromRGBO(69, 69, 69, 100),
-                            size: 22,
+                            IconlyLight.setting,
+                            color: CusColors.titleColor,
+                            size: 28,
                           ),
-                          horizontalTitleGap: -6,
+                          horizontalTitleGap: -4,
                           title: Text(
                             "Appearance",
                             style: TextStyle(
-                                fontFamily: "Poppins",
                                 fontSize: 15,
-                                color: Color.fromRGBO(69, 69, 69, 100),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w500),
+                                color: CusColors.titleColor,
+                                letterSpacing: .5,
+                                fontWeight: FontWeight.w500
+                            ),
                           ),
                           trailing: Container(
-                            child: Icon(Icons.arrow_right),
+                            child: Icon(IconlyLight.arrow_right_2, color: CusColors.titleColor,),
                           ),
                         ),
                       ),
@@ -160,22 +169,22 @@ class ProfilePage extends StatelessWidget {
                       child: Container(
                         child: ListTile(
                           leading: Icon(
-                            Icons.settings_outlined,
-                            color: Color.fromRGBO(69, 69, 69, 100),
-                            size: 22,
+                            CupertinoIcons.doc_plaintext,
+                            color: CusColors.titleColor,
+                            size: 28,
                           ),
-                          horizontalTitleGap: -6,
+                          horizontalTitleGap: -4,
                           title: Text(
                             "Loan History",
                             style: TextStyle(
-                                fontFamily: "Poppins",
                                 fontSize: 15,
-                                color: Color.fromRGBO(69, 69, 69, 100),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w500),
+                                color: CusColors.titleColor,
+                                letterSpacing: .5,
+                                fontWeight: FontWeight.w500
+                            ),
                           ),
                           trailing: Container(
-                            child: Icon(Icons.arrow_right),
+                            child: Icon(IconlyLight.arrow_right_2, color: CusColors.titleColor,),
                           ),
                         ),
                       ),
@@ -192,22 +201,22 @@ class ProfilePage extends StatelessWidget {
                       child: Container(
                         child: ListTile(
                           leading: Icon(
-                            Icons.report,
-                            color: Color.fromRGBO(69, 69, 69, 100),
-                            size: 22,
+                            IconlyLight.info_circle,
+                            color: CusColors.titleColor,
+                            size: 28,
                           ),
-                          horizontalTitleGap: -6,
+                          horizontalTitleGap: -4,
                           title: Text(
                             "Report an issue",
                             style: TextStyle(
-                                fontFamily: "Poppins",
                                 fontSize: 15,
-                                color: Color.fromRGBO(69, 69, 69, 100),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w500),
+                                color: CusColors.titleColor,
+                                letterSpacing: .5,
+                                fontWeight: FontWeight.w500
+                            ),
                           ),
                           trailing: Container(
-                            child: Icon(Icons.arrow_right),
+                            child: Icon(IconlyLight.arrow_right_2, color: CusColors.titleColor,),
                           ),
                         ),
                       ),
@@ -224,22 +233,22 @@ class ProfilePage extends StatelessWidget {
                       child: Container(
                         child: ListTile(
                           leading: Icon(
-                            Icons.settings_outlined,
-                            color: Color.fromRGBO(69, 69, 69, 100),
-                            size: 22,
+                            CupertinoIcons.question_circle,
+                            color: CusColors.titleColor,
+                            size: 28,
                           ),
-                          horizontalTitleGap: -6,
+                          horizontalTitleGap: -4,
                           title: Text(
                             "FAQ",
                             style: TextStyle(
-                                fontFamily: "Poppins",
                                 fontSize: 15,
-                                color: Color.fromRGBO(69, 69, 69, 100),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.w500),
+                                color: CusColors.titleColor,
+                                letterSpacing: .5,
+                                fontWeight: FontWeight.w500
+                            ),
                           ),
                           trailing: Container(
-                            child: Icon(Icons.arrow_right),
+                            child: Icon(IconlyLight.arrow_right_2, color: CusColors.titleColor,),
                           ),
                         ),
                       ),
@@ -247,25 +256,74 @@ class ProfilePage extends StatelessWidget {
                   ],
                 ),
                 Container(
+                  margin: EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 25),
                   child: SizedBox(
-                    width: 50,
+                    height: 44,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                        Colors.white,
-                        side: BorderSide(
-                            color: Color.fromRGBO(75, 105, 86, 100)),
-                        shape: StadiumBorder(),
-                      ),
-                      child: Text(
-                        "Log Out",
-                        style: TextStyle(
-                            color: Color.fromRGBO(75, 105, 86, 100)),
-                      ),
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side: BorderSide(width: .8, color: CusColors.buttonBg)
+                                )
+                            ),
+                            shadowColor: MaterialStatePropertyAll(Colors.transparent),
+                            backgroundColor: MaterialStateProperty.all(CusColors.appColor)
+                        ),
+                        onPressed: (){
+                          showDialog(
+                              context: context,
+                              builder: (context){
+                                return Theme(
+                                  data: ThemeData.light(),
+                                  child: CupertinoAlertDialog(
+                                    title: Text(
+                                        "Log Out",
+                                      style: TextStyle(
+                                        color: CusColors.mainColor
+                                      ),
+                                    ),
+                                    content: Text(
+                                        "Are you sure want to logout?"
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: (){
+                                            Navigator.of(context).pop('dialog');
+                                          },
+                                          child: Text("Cancel")
+                                      ),
+                                      TextButton(
+                                          onPressed: (){
+                                            Navigator.pushReplacement(context, MaterialPageRoute(
+                                                builder: (context) => SignIn(),
+                                            ));
+                                          },
+                                          child: Text(
+                                            "Log Out",
+                                            style: TextStyle(
+                                                color: Colors.redAccent
+                                            ),
+                                          )
+                                      )
+                                    ],
+                                  ),
+                                );
+                              }
+                          );
+                        },
+                        child: Text(
+                          "Log Out",
+                          style: TextStyle(
+                            color: CusColors.mainColor,
+                            fontSize: 13,
+                          ),
+                        )
                     ),
                   ),
                 ),
+                SizedBox(height: 90,)
               ],
             ),
           ),
