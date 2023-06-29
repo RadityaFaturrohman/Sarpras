@@ -217,7 +217,7 @@ class _SignFormState extends State<SignForm> {
         if (value.length < 6) {
           return 'The password must be at least 6 characters long.';
         }
-        if (value != passworded) {
+        if (value != passworded ) {
           return 'The password must be at least 6 characters long.';
         }
         return null;
